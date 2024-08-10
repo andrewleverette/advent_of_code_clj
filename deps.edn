@@ -6,4 +6,5 @@
                   :main-opts ["-m" "cognitect.test-runner"]
                   :exec-fn cognitect.test-runner.api/test}}
  :deps {org.clojure/clojure {:mvn/version "1.11.3"}
-        org.clojure/tools.cli {:mvn/version "1.1.230"}}}
+        org.clojure/tools.cli {:mvn/version "1.1.230"}
+        org.clj-commons/digest {:mvn/version "1.4.100"}}}

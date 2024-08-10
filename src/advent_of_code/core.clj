@@ -11,7 +11,8 @@
   [year day]
   (-> (format "puzzle_input/%s/day%02d.txt" year (Integer/parseInt day))
       io/resource
-      slurp))
+      slurp
+      string/trim))
 
 (defn usage
   [options-summary]
@@ -70,4 +71,6 @@ Result:  %s
           "day2.2" (->> puzzle-input (runner :day2.2) (output year day part))
           "day3.1" (->> puzzle-input (runner :day3.1) (output year day part))
           "day3.2" (->> puzzle-input (runner :day3.2) (output year day part))
+          "day4.1" (->> puzzle-input (runner :day4.1) (output year day part))
+          "day4.2" (->> puzzle-input (runner :day4.2) (output year day part))
           (println "Invalid year, day, or part"))))))
