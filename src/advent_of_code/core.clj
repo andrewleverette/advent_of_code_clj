@@ -38,14 +38,21 @@
       (not (and (:year options) (:day options) (:part options))) {:exit-message (usage summary)}
       :else {:options options})))
 
+(defn get-aoc-runner
+  [year]
+  (case year
+    "2015" aoc-2015/runner
+    (throw (UnsupportedOperationException. (str "Unsupported year: " year)))))
+
 (defn output
   [year day part result]
-  (println "================================")
-  (println "Year: " year)
-  (println "Day: " day)
-  (println "Part: " part)
-  (println "Result: " result)
-  (println "================================"))
+  (println (format "================================
+Year: %s
+Day:  %s
+Part:  %s
+Result:  %s
+================================"
+                   year day part result)))
 
 (defn -main
   [& args]
@@ -54,10 +61,13 @@
       (println exit-message)
       (let [{:keys [year day part]} options
             puzzle-input (read-puzzle-input year day)
-            part-identifer (str "day" day "." part)]
+            part-identifer (str "day" day "." part)
+            runner (get-aoc-runner year)]
         (case part-identifer
-          "day1.1" (->> puzzle-input (aoc-2015/runner :day1.1) (output year day part))
-          "day1.2" (->> puzzle-input (aoc-2015/runner :day1.2) (output year day part))
-          "day2.1" (->> puzzle-input (aoc-2015/runner :day2.1)  (output year day part))
-          "day2.2" (->> puzzle-input (aoc-2015/runner :day2.2) (output year day part))
+          "day1.1" (->> puzzle-input (runner :day1.1) (output year day part))
+          "day1.2" (->> puzzle-input (runner :day1.2) (output year day part))
+          "day2.1" (->> puzzle-input (runner :day2.1)  (output year day part))
+          "day2.2" (->> puzzle-input (runner :day2.2) (output year day part))
+          "day3.1" (->> puzzle-input (runner :day3.1) (output year day part))
+          "day3.2" (->> puzzle-input (runner :day3.2) (output year day part))
           (println "Invalid year, day, or part"))))))
