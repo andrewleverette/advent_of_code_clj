@@ -1,7 +1,7 @@
 (ns advent-of-code-2015.day-05
   "--- Day 5: Doesn't He Have Intern-Elves For This? ---
   https://adventofcode.com/2015/day/5"
-  (:require [clojure.string :as str]))
+  (:require [advent-of-code.utils :as utils]))
 
 (def vowel-set #{\a \e \i \o \u})
 (def disallowed-pairs (set [[\a \b] [\c \d] [\p \q] [\x \y]]))
@@ -42,20 +42,16 @@
 
 (defn nice-string? [pred s] (pred s))
 
-(defn parse-input
-  [input]
-  (str/split-lines input))
-
 (defn part-1
   [input]
   (->> input
-       parse-input
+       utils/parse-input
        (filter (partial nice-string? rule-set-1))
        count))
 
 (defn part-2
   [input]
   (->> input
-       parse-input
+       utils/parse-input
        (filter (partial nice-string? rule-set-2))
        count))

@@ -1,7 +1,9 @@
 (ns advent-of-code-2015.day-02
   "--- 2015 Day 2: I Was Told There Would Be No Math --
   https://adventofcode.com/2015/day/2"
-  (:require [clojure.string :as str]))
+  (:require
+   [clojure.string :as str]
+   [advent-of-code.utils :as utils]))
 
 (defn area
   "Calculate the area of a rectangle given a tuple of length and width."
@@ -73,21 +75,14 @@
   [dimension]
   (total-required-footage ribbon-for-present dimension))
 
-(defn parse-input
-  "Takes a string and returns a list of cuboids."
-  [input]
-  (->> input
-       (str/split-lines)
-       (map str->cuboid)))
-
 (defn part-1
   [input]
   (->> input
-       parse-input
+       (partial utils/parse-input str->cuboid)
        total-square-feet-of-wrapping-paper))
 
 (defn part-2
   [input]
   (->> input
-       parse-input
+       (partial utils/parse-input str->cuboid)
        total-feet-of-ribbon))
