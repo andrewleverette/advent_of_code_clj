@@ -50,7 +50,7 @@
      [(Integer/parseInt x2) (Integer/parseInt y2)]]))
 
 (defn process-instructions
-  "Given a comman map and a sequence of instructions, 
+  "Given a command map and a sequence of instructions, 
   return the grid state after all the instructions have been applied."
   [commands instructions]
   (->> instructions
