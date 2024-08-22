@@ -77,4 +77,6 @@ Result:  %s
           "day5.2" (->> puzzle-input (runner :day5.2) (output year day part))
           "day6.1" (->> puzzle-input (runner :day6.1) (output year day part))
           "day6.2" (->> puzzle-input (runner :day6.2) (output year day part))
+          "day7.1" (->> puzzle-input (runner :day7.1) (output year day part))
+          "day7.2" (->> puzzle-input (runner :day7.2) (output year day part))
           (println "Invalid year, day, or part"))))))

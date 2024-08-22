@@ -60,8 +60,7 @@
 (defn part-1
   [input]
   (->> input
-       utils/parse-input
-       (map parse-instruction)
+       (utils/parse-input parse-instruction)
        (process-instructions commands-part-1)
        vals
        (filter true?)
@@ -70,8 +69,7 @@
 (defn part-2
   [input]
   (->> input
-       utils/parse-input
-       (map parse-instruction)
+       (utils/parse-input parse-instruction)
        (process-instructions commands-part-2)
        vals
        (reduce +)))

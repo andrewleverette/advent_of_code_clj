@@ -78,11 +78,11 @@
 (defn part-1
   [input]
   (->> input
-       (partial utils/parse-input str->cuboid)
+       (utils/parse-input str->cuboid)
        total-square-feet-of-wrapping-paper))
 
 (defn part-2
   [input]
   (->> input
-       (partial utils/parse-input str->cuboid)
+       (utils/parse-input str->cuboid)
        total-feet-of-ribbon))
