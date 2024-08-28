@@ -11,7 +11,7 @@
   "Convert a line of the form 'start to end = distance' 
   into the form [#{start end} distance]"
   [line]
-  (let [[_ start end distance] (re-matches #"(\w+) to (\w+) = (\d+)" line)]
+  (when-some [[_ start end distance] (re-matches #"(\w+) to (\w+) = (\d+)" line)]
     [#{(label->keyword start)
        (label->keyword end)}
      (parse-long distance)]))
