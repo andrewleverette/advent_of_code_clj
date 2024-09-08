@@ -8,6 +8,7 @@
    [advent-of-code-2015.core :as aoc-2015]))
 
 (defn read-puzzle-input
+  "Given a year and a day as strings, return the puzzle input as a string"
   [year day]
   (-> (format "puzzle_input/%s/day%02d.txt" year (Integer/parseInt day))
       io/resource
@@ -15,6 +16,7 @@
       string/trim))
 
 (defn usage
+  "Prints the usage information"
   [options-summary]
   (->> ["This is a tool for runing Advent of Code puzzle solutions."
         ""
@@ -40,6 +42,7 @@
       :else {:options options})))
 
 (defn get-aoc-runner
+  "Given a year as a string, return the corresponding runner function"
   [year]
   (case year
     "2015" aoc-2015/runner
@@ -62,7 +65,6 @@ Result:  %s
       (println exit-message)
       (let [{:keys [year day part]} options
             puzzle-input (read-puzzle-input year day)
-            part-identifer (str "day" day "." part)
-            day-keyword (keyword part-identifer)
+            day-keyword (keyword (str "day" day "." part))
             runner (get-aoc-runner year)]
         (->> puzzle-input (runner day-keyword) (output year day part))))))
