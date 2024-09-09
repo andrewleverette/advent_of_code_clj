@@ -9,7 +9,8 @@
    [advent-of-code-2015.day-07 :as day07]
    [advent-of-code-2015.day-08 :as day08]
    [advent-of-code-2015.day-09 :as day09]
-   [advent-of-code-2015.day-10 :as day10]))
+   [advent-of-code-2015.day-10 :as day10]
+   [advent-of-code-2015.day-11 :as day11]))
 
 (defmulti runner (fn [tag _] tag))
 (defmethod runner :day1.1 [_ input] (day01/part-1 input))
@@ -32,5 +33,7 @@
 (defmethod runner :day9.2 [_ input] (day09/part-2 input))
 (defmethod runner :day10.1 [_ input] (day10/part-1 input))
 (defmethod runner :day10.2 [_ input] (day10/part-2 input))
+(defmethod runner :day11.1 [_ input] (day11/part-1 input))
+(defmethod runner :day11.2 [_ input] (day11/part-2 input))
 (defmethod runner :default [_ _] "Invalid day and part combination")
 
