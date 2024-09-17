@@ -1,4 +1,6 @@
-(ns advent-of-code-2015.day-11)
+(ns advent-of-code-2015.day-11
+  "--- Day 11: Corporate Policy ---
+ https://adventofcode.com/2015/day/11")
 
 (defn contains-straight?
   "Given a string, return true if the string contains at least 
