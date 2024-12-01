@@ -1,6 +1,6 @@
 (ns advent-of-code-2015.day-08
   (:require [clojure.string :as str]
-            [advent-of-code.utils :as utils]))
+            [advent-of-code.parsing :as p]))
 
 (def matchers
   [#"\\\""
@@ -45,11 +45,11 @@
 (defn part-1
   [input]
   (->> input
-       utils/parse-input
+       p/parse-input
        (calculate-character-difference count in-memory-length)))
 
 (defn part-2
   [input]
   (->> input
-       utils/parse-input
+       p/parse-input
        (calculate-character-difference encoded-string-length count)))

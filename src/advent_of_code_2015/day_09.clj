@@ -3,7 +3,7 @@
   https://adventofcode.com/2015/day/9"
   (:require [clojure.string :as string]
             [clojure.math.combinatorics :as c]
-            [advent-of-code.utils :as utils]))
+            [advent-of-code.parsing :as p]))
 
 (def label->keyword (comp keyword string/lower-case))
 
@@ -61,13 +61,13 @@
 (defn part-1
   [input]
   (->> input
-       (utils/parse-input parse-connection)
+       (p/parse-input parse-connection)
        connections->graph
        (distances-apply min)))
 
 (defn part-2
   [input]
   (->> input
-       (utils/parse-input parse-connection)
+       (p/parse-input parse-connection)
        connections->graph
        (distances-apply max)))

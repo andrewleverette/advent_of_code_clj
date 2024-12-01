@@ -3,7 +3,7 @@
   https://adventofcode.com/2015/day/2"
   (:require
    [clojure.string :as str]
-   [advent-of-code.utils :as utils]))
+   [advent-of-code.parsing :as p]))
 
 (defn area
   "Calculate the area of a rectangle given a tuple of length and width."
@@ -78,11 +78,11 @@
 (defn part-1
   [input]
   (->> input
-       (utils/parse-input str->cuboid)
+       (p/parse-input str->cuboid)
        total-square-feet-of-wrapping-paper))
 
 (defn part-2
   [input]
   (->> input
-       (utils/parse-input str->cuboid)
+       (p/parse-input str->cuboid)
        total-feet-of-ribbon))

@@ -1,7 +1,7 @@
 (ns advent-of-code-2015.day-07
   "--- Day 7: Some Assembly Required ---
   https://adventofcode.com/2015/day/7"
-  (:require [advent-of-code.utils :as utils]))
+  (:require [advent-of-code.parsing :as p]))
 
 (def matchers
   "Regexes for parsing instructions"
@@ -102,13 +102,13 @@
 (defn part-1
   [input]
   (->> input
-       (utils/parse-input parse-instruction)
+       (p/parse-input parse-instruction)
        init-source
        (solve :a)))
 
 (defn part-2
   [input]
-  (let [source (->> input (utils/parse-input parse-instruction) init-source)
+  (let [source (->> input (p/parse-input parse-instruction) init-source)
         signal-a (solve :a source)
         overridden-source (assoc source :b signal-a)]
     (solve :a overridden-source)))

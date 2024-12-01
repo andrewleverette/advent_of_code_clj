@@ -1,7 +1,7 @@
 (ns advent-of-code-2015.day-06
   "--- Day 6: Probably a Fire Hazard ---
   https://adventofcode.com/2015/day/6"
-  (:require [advent-of-code.utils :as utils]))
+  (:require [advent-of-code.parsing :as p]))
 
 ;; This command map is for part 1
 (def commands-part-1 {:on (constantly true)
@@ -60,7 +60,7 @@
 (defn part-1
   [input]
   (->> input
-       (utils/parse-input parse-instruction)
+       (p/parse-input parse-instruction)
        (process-instructions commands-part-1)
        vals
        (filter true?)
@@ -69,7 +69,7 @@
 (defn part-2
   [input]
   (->> input
-       (utils/parse-input parse-instruction)
+       (p/parse-input parse-instruction)
        (process-instructions commands-part-2)
        vals
        (reduce +)))

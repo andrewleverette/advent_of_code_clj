@@ -1,7 +1,7 @@
 (ns advent-of-code-2024.day-01
   "--- Day 1: Historian Hysteria ---
   https://adventofcode.com/2024/day/1"
-  (:require [advent-of-code.utils :as utils]))
+  (:require [advent-of-code.parsing :as p]))
 
 (defn total-distance-between-lists
   "Given two sorted lists, return the sum of the absolute difference between each pair of numbers"
@@ -32,15 +32,16 @@
 
 (defn part-1
   [input]
-  (let [pairs (utils/parse-long-pairs input)
-        [list-1 list-2] (pairs->vectors pairs)
-        sorted-list-1 (sort list-1)
-        sorted-list-2 (sort list-2)]
-    (total-distance-between-lists sorted-list-1 sorted-list-2)))
+  (let [[list-1 list-2] (->> input
+                             p/parse-long-pairs
+                             pairs->vectors
+                             (map sort))]
+    (total-distance-between-lists list-1 list-2)))
 
 (defn part-2
   [input]
-  (let [pairs (utils/parse-long-pairs input)
-        [list-1 list-2] (pairs->vectors pairs)
+  (let [[list-1 list-2] (->> input
+                             p/parse-long-pairs
+                             pairs->vectors)
         frequency-map (frequencies list-2)]
     (total-similarity-score list-1 frequency-map)))

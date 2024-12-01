@@ -1,6 +1,6 @@
 (ns advent-of-code-2015-test.day-10-test
   (:require [clojure.test :refer :all]
-            [advent-of-code-2015.day-10 :refer [length-of-nth-sequence next-sequence partition-and-count]]))
+            [advent-of-code-2015.day-10 :refer [length-of-nth-sequence next-sequence]]))
 
 (deftest next-sequence-tests
   (testing "Next sequence should return the next sequence of digits given an input"
