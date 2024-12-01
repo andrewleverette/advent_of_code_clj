@@ -5,7 +5,8 @@
    [clojure.tools.cli :as cli]
    [clojure.java.io :as io]
 
-   [advent-of-code-2015.core :as aoc-2015]))
+   [advent-of-code-2015.core :as aoc-2015]
+   [advent-of-code-2024.core :as aoc-2024]))
 
 (defn read-puzzle-input
   "Given a year and a day as strings, return the puzzle input as a string"
@@ -46,6 +47,7 @@
   [year]
   (case year
     "2015" aoc-2015/runner
+    "2024" aoc-2024/runner
     (throw (UnsupportedOperationException. (str "Unsupported year: " year)))))
 
 (defn output
