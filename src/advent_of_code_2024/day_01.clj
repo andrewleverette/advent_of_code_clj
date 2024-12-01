@@ -1,12 +1,14 @@
 (ns advent-of-code-2024.day-01
   "--- Day 1: Historian Hysteria ---
   https://adventofcode.com/2024/day/1"
-  (:require [advent-of-code.parsing :as p]))
+  (:require
+   [advent-of-code.math :as m]
+   [advent-of-code.parsing :as p]))
 
 (defn total-distance-between-lists
   "Given two sorted lists, return the sum of the absolute difference between each pair of numbers"
   [list-1 list-2]
-  (reduce + (map #(Math/abs (- %1 %2)) list-1 list-2)))
+  (m/sum (map m/distance list-1 list-2)))
 
 (defn similarity-score
   "Given a frequency map and a number, return the similarity score"
@@ -16,10 +18,9 @@
 (defn total-similarity-score
   "Given a sequence of numbers and a frequency map, return the total similarity score"
   [numbers frequency-map]
-  (reduce (fn [total number]
-            (+ total (similarity-score frequency-map number)))
-          0
-          numbers))
+  (->> numbers
+       (map (partial similarity-score frequency-map))
+       m/sum))
 
 (defn- pairs->vectors
   "Given a sequence of pairs, return a pair of
