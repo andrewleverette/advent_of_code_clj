@@ -26,10 +26,7 @@
   "Given a sequence of pairs, return a pair of
   vectors containing the first and second elements of each pair"
   [pairs]
-  (reduce (fn [[list-1 list-2] [a b]]
-            [(conj list-1 a) (conj list-2 b)])
-          [[] []]
-          pairs))
+  ((juxt (partial map first) (partial map second)) pairs))
 
 (defn part-1
   [input]
