@@ -4,17 +4,14 @@
 
 (deftest total-distance-between-lists-tests
   (testing "Empty or nil lists should return 0"
-    (is (= 0 (day-01/total-distance-between-lists nil nil)))
-    (is (= 0 (day-01/total-distance-between-lists [] []))))
+    (is (= 0 (day-01/total-distance-between-lists nil)))
+    (is (= 0 (day-01/total-distance-between-lists []))))
   (testing "Equal lists that are the same should return 0"
-    (is (= 0 (day-01/total-distance-between-lists [1] [1])))
-    (is (= 0 (day-01/total-distance-between-lists [1 2 3] [1 2 3]))))
+    (is (= 0 (day-01/total-distance-between-lists [[1 1]])))
+    (is (= 0 (day-01/total-distance-between-lists [[1 1] [2 2] [3 3]]))))
   (testing "Returns the total distance between the lists"
-    (is (= 3 (day-01/total-distance-between-lists [1 2 3] [2 3 4])))
-    (is (= 9 (day-01/total-distance-between-lists [1 2 3] [4 5 6]))))
-  (testing "Lists with different lengths should only compare up to the shortest length"
-    (is (= 0 (day-01/total-distance-between-lists [] [1])))
-    (is (= 1 (day-01/total-distance-between-lists [1] [2 3])))))
+    (is (= 3 (day-01/total-distance-between-lists [[1 2] [2 3] [3 4]])))
+    (is (= 9 (day-01/total-distance-between-lists [[1 4] [2 5] [3 6]])))))
 
 (deftest similarity-score-tests
   (testing "Number not in frequency map should return 0"
