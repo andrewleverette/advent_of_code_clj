@@ -7,8 +7,8 @@
 
 (defn total-distance-between-lists
   "Given two sorted lists, return the sum of the absolute difference between each pair of numbers"
-  [list-1 list-2]
-  (m/sum (map m/distance list-1 list-2)))
+  [pairs]
+  (m/sum #(apply m/distance %) pairs))
 
 (defn similarity-score
   "Given a frequency map and a number, return the similarity score"
@@ -18,9 +18,7 @@
 (defn total-similarity-score
   "Given a sequence of numbers and a frequency map, return the total similarity score"
   [numbers frequency-map]
-  (->> numbers
-       (map (partial similarity-score frequency-map))
-       m/sum))
+  (m/sum #(similarity-score frequency-map %) numbers))
 
 (defn- pairs->vectors
   "Given a sequence of pairs, return a pair of
@@ -30,16 +28,14 @@
 
 (defn part-1
   [input]
-  (let [[list-1 list-2] (->> input
-                             p/parse-long-pairs
-                             pairs->vectors
-                             (map sort))]
-    (total-distance-between-lists list-1 list-2)))
+  (->> input
+       (p/parse-long-pairs pairs->vectors)
+       (map sort)
+       (apply map vector)
+       total-distance-between-lists))
 
 (defn part-2
   [input]
-  (let [[list-1 list-2] (->> input
-                             p/parse-long-pairs
-                             pairs->vectors)
+  (let [[list-1 list-2] (p/parse-long-pairs pairs->vectors input)
         frequency-map (frequencies list-2)]
     (total-similarity-score list-1 frequency-map)))

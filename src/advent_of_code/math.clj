@@ -3,6 +3,7 @@
 (defn distance [a b]
   (abs (- a b)))
 
-(defn sum [ns]
-  (reduce + ns))
+(defn sum
+  ([coll] (reduce + coll))
+  ([f coll] (transduce (map f) + coll)))
 

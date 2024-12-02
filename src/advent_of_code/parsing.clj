@@ -8,14 +8,18 @@
   ([f input] (->> input str/split-lines (map f))))
 
 (defn parse-pairs
-  [input [f g]]
-  (->> input
-       str/split-lines
-       (map (fn [line]
-              (let [[a b] (str/split line #"\s+")]
-                [(f a) (g b)])))))
+  ([input [f g]]
+   (->> input
+        str/split-lines
+        (map (fn [line]
+               (let [[a b] (str/split line #"\s+")]
+                 [(f a) (g b)])))))
+  ([input [f g] transform]
+   (-> input
+       (parse-pairs [f g])
+       transform)))
 
 (defn parse-long-pairs
   "Parse a string into a sequence of pairs of longs"
-  [input]
-  (parse-pairs input [parse-long parse-long]))
+  ([input] (parse-pairs input [parse-long parse-long]))
+  ([transform input] (parse-pairs input [parse-long parse-long] transform)))
