@@ -1,7 +1,8 @@
 (ns advent-of-code-2024.day-02
+  "--- Day 2: Red-Nosed Reports ---
+  https://adventofcode.com/2024/day/2"
   (:require
    [advent-of-code.enumerate :as enum]
-   [advent-of-code.math :as m]
    [advent-of-code.parsing :as p]))
 
 (defn- all-increasing-in-range?
@@ -9,8 +10,8 @@
   (every? #(<= 1 % 3) deltas))
 
 (defn- all-decreasing-in-range?
-  [report]
-  (every? #(<= -3 % -1) report))
+  [deltas]
+  (every? #(<= -3 % -1) deltas))
 
 (defn report-is-safe?
   "Given a report, return true if the report is safe.
