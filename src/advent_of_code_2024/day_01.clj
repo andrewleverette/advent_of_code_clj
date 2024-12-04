@@ -6,7 +6,8 @@
    [advent-of-code.parsing :as p]))
 
 (defn total-distance-between-lists
-  "Given two sorted lists, return the sum of the absolute difference between each pair of numbers"
+  "Given two sorted lists, return the sum of the absolute difference 
+  between each pair of numbers"
   [pairs]
   (m/sum #(apply m/distance %) pairs))
 
@@ -22,7 +23,7 @@
 
 (defn- pairs->vectors
   "Given a sequence of pairs, return a pair of
-  vectors containing the first and second elements of each pair"
+  vectors containing the first and second elements of each pair respectively"
   [pairs]
   ((juxt (partial map first) (partial map second)) pairs))
 
